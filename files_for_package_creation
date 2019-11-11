@@ -1,0 +1,92 @@
+The first part of this must be done in bash, as follows: 
+
+#pick a gene - any gene!
+#search for it on GenBank. You will want to narrow the results down to only archaeal/bacterial copies and not whole genomes. This will involve some manual curation. 
+#I strongly suggest getting rid of environmental sequences as well (e.g. NOT enrichment, NOT clone)
+#unless you want to create your own taxonomy using environments it was found in or something? but generally you want copies with known taxonomy
+#export it as both a genbank file AND a fasta file (will be quite large)
+
+#extract taxonomy and version IDs from your Genbank file 
+
+grep -E 'taxon:[[:digit:]]*|VERSION' sequence.gb > taxonomy.txt
+sed -e 's/                     //' -e 's/\/db\_xref="taxon:/TAXON\t/' -e 's/"//' -e 's/     /\t/' taxonomy.txt > [yourgene]_taxonomy.txt
+
+#open the file and check that it's just names and tabs
+#trim fasta headers down to accession number 
+
+cut -d ' ' -f1 sequence.fasta > [yourgene]_for_graftm.fasta
+
+#dealing with fullnamelineage.dmp file from NCBI (downloaded from ftp://ftp.ncbi.nih.gov/pub/taxonomy/new_taxdump/ as part of the new_taxdump.zip archive) - this shouldn't be necessary again, but just in case! 
+
+sed 's/\t//g' fullnamelineage.dmp > fullnamelineage_corr.dmp
+
+#now move to R 
+#run this setup code
+```{r setup, include=FALSE}
+library(tidyverse)
+library(magrittr)
+
+add_prefixes <- function(df) {
+  prefixes <- c(" k__"," p__"," c__"," o__"," f__"," g__"," s__","")
+  na_vals <- as.list(rep("",length(df)))
+  names(na_vals) <- colnames(df)
+  df <- replace_na(df,na_vals)
+  x = 1
+  for (i in seq_along(df)) {
+    prefix <- prefixes[x]
+    df[[i]] <- paste0(prefix,df[[i]])
+    x = x+1
+  }
+  return(df)
+}
+
+```
+
+
+#the FIRST time you download the NCBI taxonomy, run this code to process it into R
+```{r ncbi file}
+ncbi_tax <- read_delim("fullnamelineage_corr.dmp",delim="|",col_names=c('taxid','organism','lineage','X'))
+ncbi_tax %<>% select(taxid,organism,lineage)
+ncbi_tax %<>% separate(lineage,into=c("Group","Domain","Superphylum","Phylum","Class","Order","Family","Genus","Species","Strain"),sep=";",extra="merge",fill="right")
+ncbi_tax_prokaryotes <- filter(ncbi_tax,Domain==" Archaea" | Domain==" Bacteria")
+ncbi_tax_prokaryotes %<>% select(taxid,organism,Domain:Strain)
+#yes there's a space before archaea and bacteria, don't ask, I don't know
+write_csv(ncbi,"ncbi_prokaryote_taxonomy_for_R.csv")
+```
+
+#ELSEIF you have already done this:
+
+```{r processing taxonomy file to greengenes format}
+ncbi_tax_prokaryotes <- read_csv("ncbi_prokaryote_taxonomy_for_R.csv")
+[yourgene]_tax <- read_tsv("[yourgene]_taxonomy.txt",col_names=c("Type","Code"))
+#ad a gene ID column 
+extra_col <- rep(1:(length(amoA_tax$Type)/2), each=2)
+[yourgene]_tax %<>% mutate(gene_id = extra_col)
+[yourgene]_tax %<>% spread(Type,Code)
+[yourgene]_tax %<>% select(gene_id,taxid=TAXON,accession=VERSION)
+[yourgene]_tax$taxid <- as.integer([yourgene]_tax$taxid)
+[yourgene]_tax_full <- inner_join(ncbi_tax_prokaryotes,[yourgene]_tax,by="taxid")
+[yourgene]_tax$taxid %<>% as.character()
+#create an accessions file
+access <- [yourgene]_tax
+#create a tax-only file
+tax <- select([yourgene]_tax_full,Domain:Strain,taxid)
+tax <- unique(tax)
+write_csv(tax,"[yourgene]_tax_to_check.csv")
+```
+
+Now open tax_to_check in Excel or your other spreadsheet program of choice and manually curate columns so that phyla genera etc are in correct lines and extraneous strain info is removed. I change 'environmental sequences' to NA. 
+#DELETE THE SUPERPHYLUM AND STRAIN COLUMNS WHEN YOU'RE DONE. 
+
+```{r final processing}
+tax <- read_csv("[yourgene]_tax_to_check.csv")
+tax$taxid %<>% as.character()
+tax %<>% add_prefixes
+tax %<>% unite(taxonomy,Domain:Species,sep=";",remove=TRUE)
+graftm_tax <- inner_join(access,tax,by="taxid")
+graftm_tax_final <- select(graftm_tax,accession,taxonomy)
+write_tsv(graftm_tax_final,"[yourgene]_taxonomy_for_graftm.txt",col_names=FALSE)
+
+#the "[yourgene]_taxonomy_for_graftm.txt" and "[yourgene]_for_graftm.fasta" files will be the files you need to create a GraftM package following their instructions
+#have fun! 
+```
