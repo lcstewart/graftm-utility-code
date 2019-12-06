@@ -1,0 +1,1 @@
+{"unaligned_sequence_database": "dsrA_for_graftm_updated.fasta", "align_hmm": "graftmwSiD3K_align.hmm", "range": 2614.5, "refpkg": "dsrA_for_graftm_updated.gpkg.refpkg", "trusted_cutoff": false, "diamond_database": null, "graftm_package_version": 3, "search_hmms": ["graftm9xgXmD_search.hmm"]}

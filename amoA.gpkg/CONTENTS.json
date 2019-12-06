@@ -1,0 +1,1 @@
+{"unaligned_sequence_database": "amoA_for_graftm.fasta", "align_hmm": "graftmrlkCTL_align.hmm", "range": 900.0, "refpkg": "amoA.refpkg", "trusted_cutoff": false, "diamond_database": null, "graftm_package_version": 3, "search_hmms": ["graftmdIHRFA_search.hmm"]}

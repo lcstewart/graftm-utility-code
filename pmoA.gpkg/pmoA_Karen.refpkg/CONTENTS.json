@@ -1,0 +1,53 @@
+{
+    "files": {
+        "phylo_model": "phylo_modelTs09Ch.json", 
+        "taxonomy": "pmo_seqs_graftm_taxonomy.csv", 
+        "tree": "treeQeHDsq.tre", 
+        "aln_fasta": "pmo_seqs_graftm_deduplicated_aligned.fasta", 
+        "seq_info": "pmo_seqs_graftm_seqinfo.csv", 
+        "tree_stats": "pmo_seqs_graftm.tre.log"
+    }, 
+    "rollback": {
+        "files": {
+            "phylo_model": "phylo_modelTs09Ch.json", 
+            "taxonomy": "pmo_seqs_graftm_taxonomy.csv", 
+            "tree": "pmo_seqs_graftm.tre", 
+            "aln_fasta": "pmo_seqs_graftm_deduplicated_aligned.fasta", 
+            "seq_info": "pmo_seqs_graftm_seqinfo.csv", 
+            "tree_stats": "pmo_seqs_graftm.tre.log"
+        }, 
+        "rollback": null, 
+        "metadata": {
+            "create_date": "2019-01-25 15:20:04", 
+            "format_version": "1.1", 
+            "locus": "/tmp/tmpjXfKkM/pmo_seqs_graftm"
+        }, 
+        "md5": {
+            "phylo_model": "7e3cfcac9ac7bcf3ff4c5dc0ba15f3b3", 
+            "taxonomy": "7a8fdf7ccb0fbfa01e214b0ac9b3587f", 
+            "tree": "506841ceb1ffb6333dc1e19fcfde5bd9", 
+            "aln_fasta": "3d59c69ffec968c36b9469a5340b98f0", 
+            "seq_info": "abf8ae9a524be47221fb701ddeed122a", 
+            "tree_stats": "570264c18fa005cad9d3d7ef89837a61"
+        }
+    }, 
+    "log": [
+        "Rerooted", 
+        "Stripped refpkg (removed 0 files)", 
+        "Loaded initial files into empty refpkg"
+    ], 
+    "metadata": {
+        "create_date": "2019-01-25 15:20:04", 
+        "format_version": "1.1", 
+        "locus": "/tmp/tmpjXfKkM/pmo_seqs_graftm"
+    }, 
+    "rollforward": null, 
+    "md5": {
+        "phylo_model": "7e3cfcac9ac7bcf3ff4c5dc0ba15f3b3", 
+        "taxonomy": "7a8fdf7ccb0fbfa01e214b0ac9b3587f", 
+        "tree": "e0772090bcac31b83d70a71079d43565", 
+        "aln_fasta": "3d59c69ffec968c36b9469a5340b98f0", 
+        "seq_info": "abf8ae9a524be47221fb701ddeed122a", 
+        "tree_stats": "570264c18fa005cad9d3d7ef89837a61"
+    }
+}

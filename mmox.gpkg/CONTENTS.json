@@ -1,0 +1,1 @@
+{"unaligned_sequence_database": "mmox_sequences_for_graftm.fasta", "align_hmm": "graftmUCvsV0_align.hmm", "range": 1753.5, "refpkg": "mmox_Karen.refpkg", "trusted_cutoff": false, "diamond_database": null, "graftm_package_version": 3, "search_hmms": ["graftm2bGQan_search.hmm"]}

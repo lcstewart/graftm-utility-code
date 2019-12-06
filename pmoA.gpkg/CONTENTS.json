@@ -1,0 +1,1 @@
+{"unaligned_sequence_database": "pmo_seqs_graftm.fasta", "align_hmm": "graftmU_mefR_align.hmm", "range": 910.5, "refpkg": "pmoA_Karen.refpkg", "trusted_cutoff": false, "diamond_database": null, "graftm_package_version": 3, "search_hmms": ["graftmxrkTRw_search.hmm"]}

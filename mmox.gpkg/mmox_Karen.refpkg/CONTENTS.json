@@ -1,0 +1,53 @@
+{
+    "files": {
+        "phylo_model": "phylo_model8MN16J.json", 
+        "taxonomy": "mmox_sequences_for_graftm_taxonomy.csv", 
+        "tree": "treejpuZcM.tre", 
+        "aln_fasta": "mmox_sequences_for_graftm_deduplicated_aligned.fasta", 
+        "seq_info": "mmox_sequences_for_graftm_seqinfo.csv", 
+        "tree_stats": "mmox_sequences_for_graftm.tre.log"
+    }, 
+    "rollback": {
+        "files": {
+            "phylo_model": "phylo_model8MN16J.json", 
+            "taxonomy": "mmox_sequences_for_graftm_taxonomy.csv", 
+            "tree": "mmox_sequences_for_graftm.tre", 
+            "aln_fasta": "mmox_sequences_for_graftm_deduplicated_aligned.fasta", 
+            "seq_info": "mmox_sequences_for_graftm_seqinfo.csv", 
+            "tree_stats": "mmox_sequences_for_graftm.tre.log"
+        }, 
+        "rollback": null, 
+        "metadata": {
+            "create_date": "2019-01-25 14:54:37", 
+            "format_version": "1.1", 
+            "locus": "/tmp/tmpfz_N31/mmox_sequences_for_graftm"
+        }, 
+        "md5": {
+            "phylo_model": "e354b7176217cba3c5fce79f6e084045", 
+            "taxonomy": "73994574c86dd77d7fe45078e62c9120", 
+            "tree": "290312bd867ae87787b1042ad24f387e", 
+            "aln_fasta": "57063cb354cb07e4d01bfcf3534a7997", 
+            "seq_info": "65e635013e5b555afca40d23ad3a0122", 
+            "tree_stats": "edbcbabd6e6b74a22d2242a77137cbb5"
+        }
+    }, 
+    "log": [
+        "Rerooted", 
+        "Stripped refpkg (removed 0 files)", 
+        "Loaded initial files into empty refpkg"
+    ], 
+    "metadata": {
+        "create_date": "2019-01-25 14:54:37", 
+        "format_version": "1.1", 
+        "locus": "/tmp/tmpfz_N31/mmox_sequences_for_graftm"
+    }, 
+    "rollforward": null, 
+    "md5": {
+        "phylo_model": "e354b7176217cba3c5fce79f6e084045", 
+        "taxonomy": "73994574c86dd77d7fe45078e62c9120", 
+        "tree": "de73caa06a0669f68e9dcd38d957f005", 
+        "aln_fasta": "57063cb354cb07e4d01bfcf3534a7997", 
+        "seq_info": "65e635013e5b555afca40d23ad3a0122", 
+        "tree_stats": "edbcbabd6e6b74a22d2242a77137cbb5"
+    }
+}

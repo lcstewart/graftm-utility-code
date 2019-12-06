@@ -1,0 +1,53 @@
+{
+    "files": {
+        "phylo_model": "phylo_modelmjfdX4.json", 
+        "taxonomy": "amoA_for_graftm_taxonomy.csv", 
+        "tree": "treelPecSi.tre", 
+        "aln_fasta": "amoA_for_graftm_deduplicated_aligned.fasta", 
+        "seq_info": "amoA_for_graftm_seqinfo.csv", 
+        "tree_stats": "amoA_for_graftm.tre.log"
+    }, 
+    "rollback": {
+        "files": {
+            "phylo_model": "phylo_modelmjfdX4.json", 
+            "taxonomy": "amoA_for_graftm_taxonomy.csv", 
+            "tree": "amoA_for_graftm.tre", 
+            "aln_fasta": "amoA_for_graftm_deduplicated_aligned.fasta", 
+            "seq_info": "amoA_for_graftm_seqinfo.csv", 
+            "tree_stats": "amoA_for_graftm.tre.log"
+        }, 
+        "rollback": null, 
+        "metadata": {
+            "create_date": "2019-10-16 10:51:32", 
+            "format_version": "1.1", 
+            "locus": "/tmp/tmpWzxxjb/amoA_for_graftm"
+        }, 
+        "md5": {
+            "phylo_model": "425ae54952b7e7d57b5e66245008eda9", 
+            "taxonomy": "9ac485f5fd314eff1a6154f3a3fc3efd", 
+            "tree": "9c9c9597c700066a801718afcc70fe0a", 
+            "aln_fasta": "3829d776195626ea3962a8c277bb6af8", 
+            "seq_info": "92fbd71beb1b144061ed2bb7f7ca39db", 
+            "tree_stats": "f8bcbfe7f780a1289ec88efcf9506008"
+        }
+    }, 
+    "log": [
+        "Rerooted", 
+        "Stripped refpkg (removed 0 files)", 
+        "Loaded initial files into empty refpkg"
+    ], 
+    "metadata": {
+        "create_date": "2019-10-16 10:51:32", 
+        "format_version": "1.1", 
+        "locus": "/tmp/tmpWzxxjb/amoA_for_graftm"
+    }, 
+    "rollforward": null, 
+    "md5": {
+        "phylo_model": "425ae54952b7e7d57b5e66245008eda9", 
+        "taxonomy": "9ac485f5fd314eff1a6154f3a3fc3efd", 
+        "tree": "92213b452422f99393f2305c4dc30f1d", 
+        "aln_fasta": "3829d776195626ea3962a8c277bb6af8", 
+        "seq_info": "92fbd71beb1b144061ed2bb7f7ca39db", 
+        "tree_stats": "f8bcbfe7f780a1289ec88efcf9506008"
+    }
+}
